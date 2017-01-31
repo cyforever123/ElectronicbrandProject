@@ -1,0 +1,38 @@
+package com.focustech.electronicbrand.bean;
+
+/**
+ * <网络请求返回体>
+ *
+ * @author caoyinfei
+ * @version [版本号, 2016/6/6]
+ * @see [相关类/方法]
+ * @since [V1]
+ */
+public class BaseResp
+{
+    /**
+     * 返回状态码
+     */
+    protected int code;
+    
+    /**
+     * 返回信息描述
+     */
+    protected String value;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+}

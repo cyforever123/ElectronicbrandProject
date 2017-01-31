@@ -1,0 +1,67 @@
+package com.focustech.electronicbrand.ui.personcenter;
+
+import android.os.Bundle;
+import android.view.View;
+
+import com.focustech.electronicbrand.R;
+import com.focustech.electronicbrand.constant.Event;
+import com.focustech.electronicbrand.ui.base.BaseActivity;
+
+public class HomeActivity extends BaseActivity{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.home_activity);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void initViews() {
+
+    }
+
+    @Override
+    public void initListeners() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void onEventMainThread(Event event) {
+        super.onEventMainThread(event);
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+    }
+
+    @Override
+    public void setHeader() {
+        super.setHeader();
+    }
+
+    @Override
+    public void onError(String errorMsg, String code) {
+
+    }
+
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+}

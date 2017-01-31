@@ -1,0 +1,52 @@
+package com.focustech.electronicbrand.biz.personcenter;
+
+import com.focustech.electronicbrand.bean.home.RegisterResp;
+import com.focustech.electronicbrand.biz.BasePresenter;
+import com.focustech.electronicbrand.bridge.BridgeFactory;
+import com.focustech.electronicbrand.bridge.Bridges;
+import com.focustech.electronicbrand.bridge.cache.sharePref.EBSharedPrefManager;
+import com.focustech.electronicbrand.bridge.cache.sharePref.EBSharedPrefUser;
+import com.focustech.electronicbrand.bridge.http.OkHttpManager;
+import com.focustech.electronicbrand.capabilities.http.ITRequestResult;
+import com.focustech.electronicbrand.capabilities.http.Param;
+import com.focustech.electronicbrand.constant.URLUtil;
+
+/**
+ * <功能详细描述>
+ *
+ * @author caoyinfei
+ * @version [版本号, 2016/5/4]
+ * @see [相关类/方法]
+ * @since [产品/模块版本]
+ */
+public class LoginPresenter extends BasePresenter<IUserLoginView> {
+    public LoginPresenter() {
+    }
+
+    public void login(String useName, String password) {
+        //网络层
+
+        mvpView.clearEditContent();
+        mvpView.hideLoading();
+        EBSharedPrefManager manager = BridgeFactory.getBridge(Bridges.SHARED_PREFERENCE);
+        manager.getKDPreferenceUserInfo().saveString(EBSharedPrefUser.USER_NAME, "abc");
+
+
+        OkHttpManager httpManager = BridgeFactory.getBridge(Bridges.HTTP);
+        httpManager.requestAsyncPost(URLUtil.USER_LOGIN, new ITRequestResult<RegisterResp>() {
+                    @Override
+                    public void onSuccessful(RegisterResp entity) {
+                        mvpView.onSuccess();
+                    }
+
+                    @Override
+                    public void onFailure(String errorMsg) {
+                        mvpView.onError(errorMsg,"");
+
+                    }
+                }, RegisterResp.class, new Param("token", "12"),
+                new Param("updateTime", "DF"));
+
+
+    }
+}
